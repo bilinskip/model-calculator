@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Main msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" class="logo-img" src="./assets/Kupudlo-main.png">
+    <Main msg="Model calculator"/>
   </div>
 </template>
 
@@ -24,5 +24,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.logo-img{
+  width: 20%;
+  height: auto;
 }
 </style>

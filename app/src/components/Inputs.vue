@@ -31,12 +31,12 @@
   </div>
     <input type="submit" value="Submit" class="submit-class"/>
   </form>
-  <div v-if="errors.length" class="errors-class">
+  <!-- <div v-if="errors.length" class="errors-class">
     <b>Please correct the following error(s):</b>
     <ul>
       <li v-for="error in errors">{{ error }}</li>
     </ul>
-  </div>
+  </div> -->
 
 </template>
 
