@@ -10,7 +10,8 @@
 <script>
   export default {
     props:{
-      errors: []
+      errors: {
+			}
     }
   }
 </script>
