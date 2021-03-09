@@ -38,7 +38,14 @@ export default {
   methods: {
     setModel(){
       let currentModel = {
-        long: '',
+        L: {
+          X: '',
+          Y: ''
+        },
+        W: {
+          X: '',
+          Y: ''
+        },
         widthInX: '',
         widthInY: '',
         height: '',
