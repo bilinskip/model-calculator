@@ -46,9 +46,7 @@ export default {
           X: '',
           Y: ''
         },
-        widthInX: '',
-        widthInY: '',
-        height: '',
+        H: '',
         constantValueForX: '',
         cardboardTypes: {
           inX: '',
@@ -56,10 +54,10 @@ export default {
         },
       };
       if (this.model.designType == this.FEFCO200){
-        currentModel.long =  2*this.model.long;
-        currentModel.widthInX = 2*this.model.width;
-        currentModel.widthInY = this.model.width/2;
-        currentModel.height = this.model.height;
+        currentModel.L.X = 2; 
+        currentModel.L.Y = 4;
+        currentModel.W.X = 2;
+        currentModel.H = 2;
         currentModel.constantValueForX = 30;
         currentModel.cardboardTypes.inX = 4*this.model.cardboardType;
         currentModel.cardboardTypes.inY = (3/2)*this.model.cardboardType;
