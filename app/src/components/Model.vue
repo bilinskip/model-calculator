@@ -58,19 +58,8 @@ export default {
       if (this.model.designType == this.FEFCO200){
         currentModel.long =  2*this.model.long;
         currentModel.widthInX = 2*this.model.width;
-        currentModel.widthInY = this.model.width/2;
-        currentModel.height = this.model.height;
-        currentModel.constantValueForX = 30;
-        currentModel.cardboardTypes.inX = 4*this.model.cardboardType;
-        currentModel.cardboardTypes.inY = (3/2)*this.model.cardboardType;
-         /* this.
-          this.currentModel.cardboardTypeInY = (3/2)*this.model.cardboardType;
-       
-          this.currentModel.valuesForRuleLength.long = 6*this.model.long;
-          this.currentModel.valuesForRuleLength.width = 10*this.model.width;
-          this.currentModel.valuesForRuleLength.cardboardType = 22*this.model.cardboardType;
-          this.currentModel.valuesForRuleLength.heigth = 6*this.model.height;  
-          this.currentModel.valuesForRuleLength.constantValue = 60;  */
+
+        
       }
       else if (this.model.designType === this.FEFCO201){
         currentModel.long =  2*this.model.long;
