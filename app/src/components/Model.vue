@@ -110,6 +110,7 @@ export default {
 
     },
     createModel(model){
+      //dupa dupa
       this.blankSizeInX = this.setBlankSizeInX(model.L.X * this.model.long, model.W.X * this.model.width, model.T.X * this.model.cardboardType, model.CON.X);
       this.blankSizeInY = this.setBlankSizeInY(this.model.height, model.W.Y * this.model.width, model.T.Y * this.model.cardboardType);
       this.sheetSize = this.setSheetSize(this.blankSizeInX, this.blankSizeInY);      
