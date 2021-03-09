@@ -40,30 +40,52 @@ export default {
       let currentModel = {
         L: {
           X: '',
-          Y: ''
+          Y: '';
+          RL: ''
         },
         W: {
           X: '',
-          Y: ''
+          Y: '',
+          RL: 
         },
-        H: '',
-        constantValueForX: '',
-        cardboardTypes: {
-          inX: '',
-          inY: ''
-        },
+        H: {
+          X: '',
+          Y: '',
+          RL: ''
+        }
+        T: {
+          X: '',
+          Y: '',
+          RL: ''
+        }
+        CON: {
+          X: '',
+          Y: '',
+          RL: ''
+        }
+        
       };
       if (this.model.designType == this.FEFCO200){
-
-        currentModel.L.X = 2; 
-        currentModel.L.Y = 4;
+        /*parametry do liczenia arkusza po X*/
+        currentModel.L.X = 2;
         currentModel.W.X = 2;
-        currentModel.H = 2;
-        currentModel.constantValueForX = 30;
-        currentModel.cardboardTypes.inX = 4*this.model.cardboardType;
-        currentModel.cardboardTypes.inY = (3/2)*this.model.cardboardType;
-        currentModel.long =  2*this.model.long;
-        currentModel.widthInX = 2*this.model.width;
+        currentModel.H.X = 0;
+        currentModel.T.X = 4;
+        currentModel.CON.X = 30;
+        /*Parametry do liczenia arkusza po Y*/
+        currentModel.L.Y = 0;
+        currentModel.W.Y = 0.5;
+        currentModel.H.Y = 1;
+        currentModel.T.Y = 1.5;
+        currentModel.CON.Y = 0;
+        /*Parametry do liczenia długości noża*/
+        currentModel.L.RL = 6;
+        currentModel.W.RL = 10;
+        currentModel.H.RL = 6;
+        currentModel.T.RL = 22;
+        currentModel.CON.RL = 60;
+
+
          /* this.
           this.currentModel.cardboardTypeInY = (3/2)*this.model.cardboardType;
        
@@ -74,14 +96,25 @@ export default {
           this.currentModel.valuesForRuleLength.constantValue = 60;  */
 
       }
-      else if (this.model.designType === this.FEFCO201){
-        currentModel.long =  2*this.model.long;
-        currentModel.widthInX = 2*this.model.width;
-        currentModel.widthInY = this.model.width;
-        currentModel.height = this.model.height;
-        currentModel.constantValueForX = 30;
-        currentModel.cardboardTypes.inX = 4*this.model.cardboardType;
-        currentModel.cardboardTypes.inY = 3*this.model.cardboardType;
+      else if (this.model.designType == this.FEFCO201){
+        /*parametry do liczenia arkusza po X*/
+        currentModel.L.X = 2;
+        currentModel.W.X = 2;
+        currentModel.H.X = 0;
+        currentModel.T.X = 4;
+        currentModel.CON.X = 30;
+        /*Parametry do liczenia arkusza po Y*/
+        currentModel.L.Y = 0;
+        currentModel.W.Y = 1;
+        currentModel.H.Y = 1;
+        currentModel.T.Y = 3;
+        currentModel.CON.Y = 0;
+        /*Parametry do liczenia długości noża*/
+        currentModel.L.RL = 8;
+        currentModel.W.RL = 16;
+        currentModel.H.RL = 6;
+        currentModel.T.RL = 30;
+        currentModel.CON.RL = 60;
       }
       /*else if (this.model.designType === this.FEFCO202){
         this.createFefco201(this.model);
@@ -98,31 +131,7 @@ export default {
      /* this.model.ruleLength = this.setRuleLength(model.valuesForRuleLength.long, model.valuesForRuleLength.width, model.valuesForRuleLength.cardboardType,  model.valuesForRuleLength.height, model.valuesForRuleLength.constantValue);*/
 
     },
-    createFefco200(model){
-      console.log('model in fefco 200 ', model);
-      this.blankSizeInX = this.setBlankSizeInX(2*model.long, 2*model.width, 4*model.cardboardType, 30);
-      console.log('X ', this.blankSizeInX);
-      this.blankSizeInY = this.setBlankSizeInY(model.height, model.width/2, 3*model.cardboardType);
-      this.sheetSize = this.setSheetSize(this.blankSizeInX, this.blankSizeInY);      
-      this.sheetArea = this.setSheetArea(this.blankSizeInX, this.blankSizeInY);
-      this.ruleLength = this.setRuleLength(6*model.long, 10*model.width, 22*model.cardboardType,  6*model.height, 60);
-    },
-     createFefco201(model){
-      console.log('model in fefco 201 ', model);
-      this.blankSizeInX = this.setBlankSizeInX(2*model.long, 2*model.width, 4*model.cardboardType, 30);
-      this.blankSizeInY = this.setBlankSizeInY(model.height, model.width, 3*model.cardboardType);
-      this.sheetSize = this.setSheetSize(this.blankSizeInX, this.blankSizeInY);
-      this.sheetArea = this.setSheetArea(this.blankSizeInX, this.blankSizeInY);
-      this.ruleLength = this.setRuleLength(8*model.long, 16*model.width, 30*model.cardboardType,  6*model.height, 60);
-    },
-     createFefco202(model){
-      console.log('model in fefco 202 ', model);
-      this.blankSizeInX = this.setBlankSizeInX(2*model.long, 2*model.width, 4*model.cardboardType, 30);
-      this.blankSizeInY = this.setBlankSizeInY( model.height, model.width, 3*model.cardboardType);
-      this.sheetSize = this.setSheetSize(this.blankSizeInX, this.blankSizeInY);
-      this.sheetArea = this.setSheetArea(this.blankSizeInX, this.blankSizeInY);
-     this.ruleLength = this.setRuleLength(8*model.long, 16*model.width, 30*model.cardboardType,  6*model.height, 860);
-    },
+    
 
 
     setSheetSize(blankSizeInX, blankSizeInY){
