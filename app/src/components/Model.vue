@@ -40,24 +40,24 @@ export default {
       let currentModel = {
         L: {
           X: '',
-          Y: '';
+          Y: '',
           RL: ''
         },
         W: {
           X: '',
           Y: '',
-          RL: 
+          RL: '',
         },
         H: {
           X: '',
           Y: '',
           RL: ''
-        }
+        },
         T: {
           X: '',
           Y: '',
-          RL: ''
-        }
+          RL: '',
+        },
         CON: {
           X: '',
           Y: '',
@@ -116,9 +116,7 @@ export default {
         currentModel.T.RL = 30;
         currentModel.CON.RL = 60;
       }
-      /*else if (this.model.designType === this.FEFCO202){
-        this.createFefco201(this.model);
-      }*/
+
       console.log('## current model ', currentModel);
       this.createModel(currentModel);
 
