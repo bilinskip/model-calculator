@@ -40,24 +40,24 @@ export default {
       let currentModel = {
         L: {
           X: '',
-          Y: '';
+          Y: '',
           RL: ''
         },
         W: {
           X: '',
           Y: '',
-          RL: 
+          RL: '',
         },
         H: {
           X: '',
           Y: '',
           RL: ''
-        }
+        },
         T: {
           X: '',
           Y: '',
           RL: ''
-        }
+        },
         CON: {
           X: '',
           Y: '',
@@ -85,16 +85,6 @@ export default {
         currentModel.T.RL = 22;
         currentModel.CON.RL = 60;
 
-
-         /* this.
-          this.currentModel.cardboardTypeInY = (3/2)*this.model.cardboardType;
-       
-          this.currentModel.valuesForRuleLength.long = 6*this.model.long;
-          this.currentModel.valuesForRuleLength.width = 10*this.model.width;
-          this.currentModel.valuesForRuleLength.cardboardType = 22*this.model.cardboardType;
-          this.currentModel.valuesForRuleLength.heigth = 6*this.model.height;  
-          this.currentModel.valuesForRuleLength.constantValue = 60;  */
-
       }
       else if (this.model.designType == this.FEFCO201){
         /*parametry do liczenia arkusza po X*/
@@ -116,24 +106,17 @@ export default {
         currentModel.T.RL = 30;
         currentModel.CON.RL = 60;
       }
-      /*else if (this.model.designType === this.FEFCO202){
-        this.createFefco201(this.model);
-      }*/
-      console.log('## current model ', currentModel);
       this.createModel(currentModel);
 
     },
     createModel(model){
-      this.blankSizeInX = this.setBlankSizeInX(model.long, model.widthInX, model.cardboardTypes.inX, model.constantValueForX);
-      this.blankSizeInY = this.setBlankSizeInY(model.height, model.widthInY, model.cardboardTypes.inY);
+      this.blankSizeInX = this.setBlankSizeInX(model.L.X * this.model.long, model.W.X * this.model.width, model.T.X * this.model.cardboardType, model.CON.X);
+      this.blankSizeInY = this.setBlankSizeInY(this.model.height, model.W.Y * this.model.width, model.T.Y * this.model.cardboardType);
       this.sheetSize = this.setSheetSize(this.blankSizeInX, this.blankSizeInY);      
       this.sheetArea = this.setSheetArea(this.blankSizeInX, this.blankSizeInY);
-     /* this.model.ruleLength = this.setRuleLength(model.valuesForRuleLength.long, model.valuesForRuleLength.width, model.valuesForRuleLength.cardboardType,  model.valuesForRuleLength.height, model.valuesForRuleLength.constantValue);*/
-
+      this.ruleLength = this.setRuleLength(model.L.RL * this.model.long, model.W.RL * this.model.width, model.T.RL *  this.model.cardboardType, model.H.RL * this.model.height, model.CON.RL);
     },
     
-
-
     setSheetSize(blankSizeInX, blankSizeInY){
       return `Sheet Size is ${blankSizeInX}x${blankSizeInY}`;
     },
