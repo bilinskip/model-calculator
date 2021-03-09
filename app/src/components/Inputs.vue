@@ -1,48 +1,50 @@
 <template>
-  <form @submit="onSubmit" class="add-form">
-  <div class="form-control">
-    <label>Long</label>
-    <input type="number" v-model="long" name="long">
+<div>
+    <form @submit="onSubmit" class="add-form">
+    <div class="form-control">
+      <label>Long</label>
+      <input type="number" v-model="long" name="long">
+    </div>
+    <div class="form-control">
+      <label>Width</label>
+      <input type="number" v-model="width" name="width">
+    </div>
+    <div class="form-control">
+      <label> Height</label>
+      <input type="number" v-model="height" name="height">
+    </div>
+    <div class="form-control">
+      <label>Cardboard types</label>
+      <select id="cardboard" v-model="carboardType" @change="setCardboardType">
+        <option v-for="type in cardboardTypes" v-bind:value="type.value" v-bind:key="type.text">
+          {{ type.text }}
+        </option>
+      </select>
+    </div>
+    <div class="form-control">
+      <label>Design types</label>
+      <select id="design" v-model="designType" 
+      @change="setDesignType">
+        <option v-for="type in designTypes" v-bind:value="type.value" v-bind:key="type.text">
+          {{ type.text }}
+        </option>
+      </select>
+    </div>
+      <input type="submit" value="Submit" class="submit-class"/>
+    </form>
+    <div v-show="errors.length">
+      <Errors/>
+    </div>
   </div>
-  <div class="form-control">
-    <label>Width</label>
-    <input type="number" v-model="width" name="width">
-  </div>
-  <div class="form-control">
-    <label> Height</label>
-    <input type="number" v-model="height" name="height">
-  </div>
-  <div class="form-control">
-    <label>Cardboard types</label>
-    <select id="cardboard" v-model="carboardType" @change="setCardboardType">
-      <option v-for="type in cardboardTypes" v-bind:value="type.value" v-bind:key="type.text">
-        {{ type.text }}
-      </option>
-    </select>
-  </div>
-  <div class="form-control">
-    <label>Design types</label>
-    <select id="design" v-model="designType" 
-    @change="setDesignType">
-      <option v-for="type in designTypes" v-bind:value="type.value" v-bind:key="type.text">
-        {{ type.text }}
-      </option>
-    </select>
-  </div>
-    <input type="submit" value="Submit" class="submit-class"/>
-  </form>
-  <!-- <div v-if="errors.length" class="errors-class">
-    <b>Please correct the following error(s):</b>
-    <ul>
-      <li v-for="error in errors">{{ error }}</li>
-    </ul>
-  </div> -->
-
 </template>
 
 <script>
+import Errors from './Errors'
 export default {
   name: 'Inputs',
+  components: {
+    Errors
+  },
   data() {
     return {
       errors: [],
@@ -143,12 +145,5 @@ export default {
   font-size: 20px;
   font-weight: 700;
 }
-.errors-class{
-  margin-top: 10px;
-  color: red;
-}
-li {
-  display:list-item;
-  padding: 2px;
-}
+
 </style>
