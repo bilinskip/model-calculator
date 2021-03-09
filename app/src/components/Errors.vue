@@ -2,17 +2,17 @@
     <div class="errors-class">
         <b>Please correct the following error(s):</b>
         <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+            <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
         </ul>
     </div>
 </template>
 
 <script>
-    export default {
-        props:{
-            errors: []
-        }
+  export default {
+    props:{
+      errors: []
     }
+  }
 </script>
 
 <style scoped>
@@ -21,7 +21,7 @@
   color: red;
 }
 li {
-  display:list-item;
+  list-style-type: none;
   padding: 2px;
 }
 

@@ -32,14 +32,14 @@
     </div>
       <input type="submit" value="Submit" class="submit-class"/>
     </form>
-    <div v-show="errors.length">
-      <Errors/>
+    <div v-if="errors.length" class="errors-class">
+      <Errors :errors="errors"/>
     </div>
   </div>
 </template>
 
 <script>
-import Errors from './Errors'
+import Errors from './Errors.vue'
 export default {
   name: 'Inputs',
   components: {
