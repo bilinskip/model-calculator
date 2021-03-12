@@ -61,7 +61,10 @@ export default {
       designTypes: [
       { text: 'fefco 200', value: 'fefco200' },
       { text: 'fefco 201', value: 'fefco201' },
-      { text: 'fefco 202', value: 'fefco202' }
+      { text: 'fefco 202', value: 'fefco202' },
+      { text: 'fefco 203', value: 'fefco203' },
+      { text: 'fefco 204', value: 'fefco204' },
+      { text: 'fefco 205', value: 'fefco205' }
     ]
     }
   },
