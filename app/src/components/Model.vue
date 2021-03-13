@@ -1,8 +1,5 @@
 <template>
   <div class="model-div">
-    <div v-show="model.designType">
-      <Fefco-parameters :fefcoType ="model.designType" @create-fefco-parameters="createFefcoParameters"/>
-    </div>
     <p>Area is {{sheetArea}}</p>
     <p>Rule Length is {{ruleLength}}</p>
     <p>{{sheetSize}}</p>
@@ -10,12 +7,9 @@
 </template>
 
 <script>
-import FefcoParameters from './FefcoParameters.vue'
+import parameters from "../assets/parameters.json";
 export default {
   name: 'Model',
-  components: {
-    FefcoParameters
-  },
   props: {
     model: {
       long: Number,
@@ -34,10 +28,15 @@ export default {
         sheetArea: '',
       }
   },
+  watch:{
+    model: function(){
+      this.setModel();
+    }
+  },
   methods: {
-    createFefcoParameters(fefcoParameters){
-      this.createModel(fefcoParameters);
-
+    setModel(){
+        const model = parameters[this.model.designType];
+        this.createModel(model);
     },
     createModel(model){
       this.blankSizeInX = this.setBlankSizeInX(model.L.X * this.model.long, model.W.X * this.model.width, model.H.X * this.model.height, model.T.X * this.model.cardboardType, model.CON.X);
