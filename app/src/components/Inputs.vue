@@ -78,7 +78,6 @@ export default {
         cardboardType:  Number(this.cardboardType),
         designType: this.designType
       };
-      console.log('## long digits ', modelDimensions.long.toString().length);
        this.errors = [];
       if (!modelDimensions.long){
         this.errors.push("Long is required");
