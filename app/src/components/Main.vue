@@ -3,16 +3,21 @@
     <h1>{{ msg }}</h1>
     <Inputs @add-model="addModel" />
     <div v-show="model.long">
-      <Model :model="model"/>
+      <Model :model="model" :parameters="parameters"/>
     </div>
   </div>
 </template>
 
 <script>
+import json from "../assets/parameters.json";
 import Inputs from './Inputs'
 import Model from './Model'
 export default {
   name: 'Main',
+  components :{
+    Inputs,
+    Model
+  },
   props: {
     msg: String
   },
@@ -21,18 +26,15 @@ export default {
          result: '',
          model: [],
          sheetLong: '',
-         sheetWidth: ''
+         sheetWidth: '',
+         parameters: json
     }
   },
   methods: {
     addModel(modelDimensions) {
       this.model = modelDimensions;
     }
-  },
-  components :{
-    Inputs,
-    Model
-  },
+  }
 }
 </script>
 

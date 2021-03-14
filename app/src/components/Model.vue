@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import parameters from "../assets/parameters.json";
+
 export default {
   name: 'Model',
   props: {
@@ -17,7 +17,8 @@ export default {
       height: Number,
       cardboardType: Number,
       designType: String
-    }
+    },
+    parameters: {}
   },
   data(){
       return {
@@ -35,7 +36,7 @@ export default {
   },
   methods: {
     setModel(){
-        const model = parameters[this.model.designType];
+        const model = this.parameters[this.model.designType];
         this.createModel(model);
     },
     createModel(model){

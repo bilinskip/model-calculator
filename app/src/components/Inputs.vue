@@ -15,21 +15,13 @@
     </div>
     <div class="form-control">
       <label>Cardboard types</label>
-      <select id="cardboard" v-model="carboardType" @change="setCardboardType">
-        <option v-for="type in cardboardTypes" v-bind:value="type.value" v-bind:key="type.text">
-          {{ type.text }}
-        </option>
-      </select>
+        <v-select label="text" :options="cardboardTypeOptions" v-model="cardboardType"></v-select>
     </div>
-    <div class="form-control">
+     <div class="form-control">
       <label>Design types</label>
-      <select id="design" v-model="designType" 
-      @change="setDesignType">
-        <option v-for="type in designTypes" v-bind:value="type.value" v-bind:key="type.text">
-          {{ type.text }}
-        </option>
-      </select>
+     <v-select label="text" :options="designTypeOptions" v-model="designType"></v-select>
     </div>
+    
       <input type="submit" value="Submit" class="submit-class"/>
     </form>
     <div v-if="errors.length" class="errors-class">
@@ -40,6 +32,13 @@
 
 <script>
 import Errors from './Errors.vue'
+import newFefcoJSON from "../assets/newFefco.json"
+import cardboardTypesJSON from "../assets/cardboardTypes.json"
+import Vue from 'vue'
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
+
+Vue.component('v-select', vSelect)
 export default {
   name: 'Inputs',
   components: {
@@ -51,33 +50,25 @@ export default {
       long: '',
       width: '',
       height: '',
-      carboardType: '',
-      cardboardTypes: [
-      { text: 'B', value: '3' },
-      { text: 'C', value: '4' },
-      { text: 'E', value: '2' }
-    ],
+      cardboardType: '',
+      cardboardTypeOptions: cardboardTypesJSON,
       designType: '',
-      designTypes: [
-      { text: 'fefco 200', value: 'fefco200' },
-      { text: 'fefco 201', value: 'fefco201' },
-      { text: 'fefco 202', value: 'fefco202' },
-      { text: 'fefco 203', value: 'fefco203' },
-      { text: 'fefco 204', value: 'fefco204' },
-      { text: 'fefco 205', value: 'fefco205' }
-    ]
+      designTypeOptions: newFefcoJSON
     }
   },
   methods: {
+    setDesignTypes(){
+    },
     onSubmit(e) {
       e.preventDefault()
       const modelDimensions = {
         long: Number(this.long),
         width:  Number(this.width),
         height:  Number(this.height),
-        cardboardType:  Number(this.cardboardType),
-        designType: this.designType
+        cardboardType:  this.cardboardType.value,
+        designType: this.designType.value
       };
+      console.log('## model dims ', modelDimensions);
        this.errors = [];
       if (!modelDimensions.long){
         this.errors.push("Long is required");
@@ -116,12 +107,6 @@ export default {
       this.height = '';
       this.cardboardType = '';
       this.designType = '';*/
-    },
-    setCardboardType(event){
-      this.cardboardType = event.target.value;
-    },
-    setDesignType(event){
-      this.designType = event.target.value;
     }
   }
 }
@@ -146,6 +131,11 @@ export default {
   height: 60px;
   font-size: 20px;
   font-weight: 700;
+}
+.v-select {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 </style>
