@@ -52,6 +52,10 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #white;
+}
+h1 {
+  color: white;
+  font-size: 48px;
 }
 </style>

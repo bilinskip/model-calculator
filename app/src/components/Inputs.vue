@@ -1,17 +1,17 @@
 <template>
-<div>
+<div class="input-div">
     <form @submit="onSubmit" class="add-form">
     <div class="form-control">
       <label>Long</label>
-      <input type="number" v-model="long" name="long">
+      <input type="number" v-model="long" name="long" class="input-element">
     </div>
     <div class="form-control">
       <label>Width</label>
-      <input type="number" v-model="width" name="width">
+      <input type="number" v-model="width" name="width" class="input-element">
     </div>
     <div class="form-control">
       <label> Height</label>
-      <input type="number" v-model="height" name="height">
+      <input type="number" v-model="height" name="height" class="input-element">
     </div>
     <div class="form-control">
       <label>Cardboard types</label>
@@ -36,6 +36,7 @@ import newFefcoJSON from "../assets/newFefco.json"
 import cardboardTypesJSON from "../assets/cardboardTypes.json"
 import Vue from 'vue'
 import vSelect from 'vue-select'
+
 import 'vue-select/dist/vue-select.css';
 
 Vue.component('v-select', vSelect)
@@ -113,29 +114,83 @@ export default {
 </script>
 
 <style scoped>
+.input-div{
+  width: 50%;
+  margin-left:auto;
+  margin-right: auto;
+  border: 5px solid white;
+  border-radius: 10px;
+}
 .form-control{
   margin: 10px 0;
 }
 .form-control label {
   display: block;
 }
-.form-control input {
+/* .form-control input {
   width: 80%;
   height: 40px;
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
-}
+} */
 .submit-class {
-  width: 80%;
-  height: 60px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 25%;
+  height: 40px;
   font-size: 20px;
   font-weight: 700;
+  color: white;
+  border: 1px solid grey;
+  border-radius: 10px;
+  background-color: #009EDB;
+  transition: 500ms;
+  opacity: 0.6;
+}
+.submit-class:hover {
+   opacity: 1;
+}
+.submit-class:focus {
+  outline: none;
 }
 .v-select {
-  width: 50%;
+  width: 60%;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
-}
+    border: 1px solid grey; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    background: white;
+     border-radius: 10px;
 
+} 
+
+.input-element {
+  width: 56%;
+  font-size: 17px;
+  color: black;
+    border: 1px solid grey; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: white;
+    margin: 0 0 10px 0;
+    border-radius: 10px;
+}
 </style>
