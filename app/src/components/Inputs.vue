@@ -4,34 +4,50 @@
     <div class="form-control">
       <label>Long</label>
       <input type="number" v-model="long" name="long" class="input-element">
+       <div v-if="errors[0]">
+        <InlineError :error="errors[0]"/>
+      </div>
     </div>
     <div class="form-control">
       <label>Width</label>
       <input type="number" v-model="width" name="width" class="input-element">
+       <div v-if="errors[1]">
+        <InlineError :error="errors[1]"/>
+      </div>
     </div>
     <div class="form-control">
       <label> Height</label>
       <input type="number" v-model="height" name="height" class="input-element">
+      <div v-if="errors[2]">
+        <InlineError :error="errors[2]"/>
+      </div>
     </div>
     <div class="form-control">
       <label>Cardboard types</label>
         <v-select label="text" :options="cardboardTypeOptions" v-model="cardboardType"></v-select>
+         <div v-if="errors[3]">
+        <InlineError :error="errors[3]"/>
+      </div>
     </div>
      <div class="form-control">
       <label>Design types</label>
      <v-select label="text" :options="designTypeOptions" v-model="designType"></v-select>
+      <div v-if="errors[4]">
+        <InlineError :error="errors[4]"/>
+      </div>
     </div>
     
       <input type="submit" value="Submit" class="submit-class"/>
     </form>
-    <div v-if="errors.length" class="errors-class">
+    <!-- <div v-if="errors.length" class="errors-class">
       <Errors :errors="errors"/>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import Errors from './Errors.vue'
+// import Errors from './Errors.vue'
+import InlineError from './InlineError.vue'
 import newFefcoJSON from "../assets/newFefco.json"
 import cardboardTypesJSON from "../assets/cardboardTypes.json"
 import Vue from 'vue'
@@ -43,7 +59,8 @@ Vue.component('v-select', vSelect)
 export default {
   name: 'Inputs',
   components: {
-    Errors
+    // Errors,
+    InlineError
   },
   data() {
     return {
@@ -72,19 +89,19 @@ export default {
       console.log('## model dims ', modelDimensions);
        this.errors = [];
       if (!modelDimensions.long){
-        this.errors.push("Long is required");
+        this.errors.push("*Long is required");
       }
       if (!modelDimensions.width){
-        this.errors.push("Width is required");
+        this.errors.push("*Width is required");
       }
       if (!modelDimensions.height){
-        this.errors.push("Height is required");
+        this.errors.push("*Height is required");
       }
       if (!modelDimensions.cardboardType){
-        this.errors.push("Cardboard Type is required");
+        this.errors.push("*Cardboard Type is required");
       }
       if (!modelDimensions.designType){
-        this.errors.push("Design Type is required");
+        this.errors.push("*Design Type is required");
       }
       if (modelDimensions.width > modelDimensions.long){
         this.errors.push("model Long has to be greater than model Width");
@@ -94,6 +111,9 @@ export default {
         || modelDimensions.height.toString().length > 4){
           this.errors.push("Each model dimension has to be lower than 10000");
         }
+
+        console.log("errors ", this.errors);
+        console.log("errors [long] ", this.errors[0]);
       
       if (!this.errors.length) {
         this.$emit('add-model', modelDimensions);
@@ -126,6 +146,8 @@ export default {
 }
 .form-control label {
   display: block;
+  color: white;
+  font-size: 17px;
 }
 /* .form-control input {
   width: 80%;
