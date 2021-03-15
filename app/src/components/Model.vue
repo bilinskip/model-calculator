@@ -72,8 +72,14 @@ export default {
 </script>
 <style scoped>
   .model-div{
-    border: 2px solid black;
-    margin-top: 20px;
+  margin-top: 20px;
+  width: 50%;
+  margin-left:auto;
+  margin-right: auto;
+  border: 5px solid white;
+  border-radius: 10px;
+  color: white;
+  font-size: 24px;
   }
   
 </style>
